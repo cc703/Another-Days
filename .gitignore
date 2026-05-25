@@ -3,7 +3,7 @@ project.private.config.json
 
 .claude/
 .codex/
-
+.omx/
 .omx/context/
 .omx/interviews/
 .omx/specs/
@@ -22,6 +22,7 @@ AGENTS.md
 CLAUDE.md
 
 release-artifacts/
+image/
 
 node_modules/
 cloudfunctions/**/node_modules/
