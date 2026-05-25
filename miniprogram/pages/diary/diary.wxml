@@ -1,0 +1,95 @@
+<chaos-toast show="{{toastVisible}}" message="{{toastMessage}}"></chaos-toast>
+
+<view class="diary-page soft-page">
+  <view class="diary-topbar">
+    <view class="diary-topbar__left">
+      <view class="soft-back" bindtap="onBack">‹</view>
+    </view>
+    <view class="diary-topbar__date">
+      <text>{{selectedDate}}</text>
+      <text>今日病历本</text>
+    </view>
+    <view class="diary-topbar__right"></view>
+  </view>
+
+  <view class="diary-body">
+    <view class="soft-card diary-mood-card">
+      <text class="soft-card__title">今日情绪诊断</text>
+      <view class="diary-mood-row">
+        <view
+          wx:for="{{moodOptions}}"
+          wx:key="key"
+          class="diary-mood-btn {{editorMood === item.key ? 'is-active' : ''}}"
+          bindtap="onMoodPick"
+          data-mood="{{item.key}}"
+        >
+          <text class="diary-mood-btn__icon">{{item.icon}}</text>
+          <text class="diary-mood-btn__label">{{item.label}}</text>
+        </view>
+      </view>
+      <input
+        class="diary-mood-custom"
+        placeholder="或者写一个自己的状态"
+        value="{{customMood}}"
+        bindinput="onCustomMoodInput"
+        maxlength="12"
+      />
+    </view>
+
+    <view class="soft-card diary-summary-card">
+      <view class="diary-summary-card__left">
+        <v2-icon name="check"></v2-icon>
+        <text>{{summaryText}}</text>
+      </view>
+    </view>
+
+    <view class="diary-paper">
+      <view class="diary-paper__redline"></view>
+      <view class="diary-paper__sticker" bindtap="onChooseImages">
+        <text>＋</text>
+        <text>贴图</text>
+      </view>
+      <textarea
+        class="diary-paper__textarea"
+        placeholder="今天想对自己说什么？写的乱七八糟也没关系..."
+        value="{{editorContent}}"
+        bindinput="onEditorInput"
+        maxlength="500"
+        show-confirm-bar="{{false}}"
+      ></textarea>
+    </view>
+
+    <view class="diary-tag-row">
+      <input
+        class="diary-tag-input"
+        placeholder="手动添加标签"
+        value="{{tagDraft}}"
+        bindinput="onTagDraftInput"
+        confirm-type="done"
+        bindconfirm="onTagDraftConfirm"
+      />
+      <view
+        wx:for="{{diaryTags}}"
+        wx:key="*this"
+        class="diary-tag-chip {{editorTags.indexOf(item) >= 0 ? 'is-active' : ''}}"
+        bindtap="onTagToggle"
+        data-tag="{{item}}"
+      >
+        #{{item}}
+      </view>
+    </view>
+
+    <view class="diary-image-panel">
+      <view wx:for="{{editorImages}}" wx:key="key" class="diary-image-item">
+        <image src="{{item.url || item.tempFilePath || item.fileID}}" mode="aspectFill"></image>
+        <view class="diary-image-item__remove" bindtap="onRemoveImage" data-key="{{item.key}}">×</view>
+      </view>
+    </view>
+
+    <view class="diary-save-bar">
+      <view class="soft-primary-button diary-save-bar__button" bindtap="onSubmitDiary">
+        {{submitting ? '保存中' : '保存'}}
+      </view>
+    </view>
+  </view>
+</view>

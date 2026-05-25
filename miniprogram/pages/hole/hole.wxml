@@ -1,0 +1,53 @@
+<chaos-toast show="{{toastVisible}}" message="{{toastMessage}}"></chaos-toast>
+
+<view class="hole-page soft-page">
+  <view class="soft-container soft-container--secondary">
+    <view class="hole-nav">
+      <view class="soft-back" bindtap="onBack">‹</view>
+      <text>情绪垃圾站</text>
+      <view class="hole-nav__ghost"></view>
+    </view>
+
+    <view class="hole-composer">
+      <text class="hole-composer__copy">今天已经清空了 <text>{{traceCount}}</text> 次情绪，比昨天更棒了。</text>
+      <textarea
+        class="hole-composer__textarea"
+        value="{{moodText}}"
+        maxlength="200"
+        placeholder="把委屈、烦躁、压力都扔进来吧。不管写什么，这里都会稳稳接住..."
+        bindinput="onMoodInput"
+        show-confirm-bar="{{false}}"
+      ></textarea>
+      <view class="hole-composer__footer">
+        <text>{{moodTextCount}} / 200</text>
+        <view class="hole-tags">
+          <text>{{moodTextCount > 80 ? '情绪偏重' : '轻量释放'}}</text>
+          <text>{{traceCount ? '已留痕' : '未留痕'}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="soft-dark-button hole-submit" bindtap="onTransformMood">丢进树洞销毁</view>
+
+    <view class="hole-memory-card" bindtap="onOpenDiary">
+      <view>
+        <text class="hole-memory-card__title">今日病历本</text>
+        <text class="hole-memory-card__desc">把整理后的情绪写进日记。</text>
+      </view>
+      <text class="hole-memory-card__arrow">›</text>
+    </view>
+
+    <view class="hole-history">
+      <text class="hole-history__title">历史碎片</text>
+      <view wx:if="{{traceCollectionMissing}}" class="hole-history__empty">请先在云数据库创建 mood_traces 集合。</view>
+      <view wx:elif="{{traceLoading}}" class="hole-history__empty">正在读取这一天留下的情绪碎片...</view>
+      <view wx:elif="{{traceList.length}}" class="hole-history__list">
+        <view wx:for="{{traceList}}" wx:key="id" wx:for-item="trace" class="hole-history__item">
+          <text class="hole-history__meta">{{trace.timeText}} 已转化</text>
+          <text class="hole-history__content">{{trace.content}}</text>
+        </view>
+      </view>
+      <view wx:else class="hole-history__empty">这一天还没有留下新的情绪碎片。</view>
+    </view>
+  </view>
+</view>

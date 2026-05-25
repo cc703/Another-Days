@@ -1,0 +1,27 @@
+.chaos-toast {
+  position: fixed;
+  top: 88rpx;
+  left: 50%;
+  z-index: 90;
+  transform: translateX(-50%) scale(0.94);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+}
+
+.chaos-toast--show {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+.chaos-toast__bubble {
+  max-width: 520rpx;
+  padding: 18rpx 28rpx;
+  border: 4rpx solid #ffffff;
+  background: #111111;
+  box-shadow: 10rpx 10rpx 0 rgba(17, 17, 17, 0.24);
+  color: #fff8ed;
+  font-size: 22rpx;
+  font-weight: 900;
+  line-height: 1.5;
+}

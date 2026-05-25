@@ -1,0 +1,72 @@
+<chaos-toast show="{{toastVisible}}" message="{{toastMessage}}"></chaos-toast>
+
+<view class="stats-page soft-page">
+  <view class="soft-container soft-container--secondary">
+    <view class="stats-nav">
+      <view class="soft-back" bindtap="onBack">‹</view>
+      <text>存活证据报告</text>
+      <view class="stats-nav__ghost"></view>
+    </view>
+
+    <view class="stats-segment">
+      <view
+        wx:for="{{periodTabs}}"
+        wx:key="key"
+        class="{{item.active ? 'is-active' : ''}}"
+        data-period="{{item.key}}"
+        bindtap="onSelectPeriod"
+      >{{item.label}}</view>
+    </view>
+
+    <view class="soft-card stats-chart-card">
+      <view class="soft-card__topline">
+        <view>
+          <text class="soft-card__title">{{chartTitle}}</text>
+          <text class="stats-chart-card__total">总计 {{totalFocusValue}} 分钟</text>
+        </view>
+      </view>
+      <view wx:if="{{weekTrend.length}}" class="stats-bars">
+        <view wx:for="{{weekTrend}}" wx:key="key" class="stats-bars__item">
+          <view class="stats-bars__bar" style="height: {{isRealityBlurred ? item.maskedBarHeight : item.barHeight}};"></view>
+          <text>{{item.weekday}}</text>
+        </view>
+      </view>
+      <view wx:else class="stats-empty">{{loading ? '统计同步中...' : emptyTrendText}}</view>
+    </view>
+
+    <view class="stats-metric-grid">
+      <view wx:for="{{metricCards}}" wx:key="key" class="soft-card stats-metric-card {{item.className}}">
+        <text class="stats-metric-card__title">{{item.title}}</text>
+        <view class="stats-metric-card__value">
+          <text>{{item.value}}</text>
+          <text>{{item.unit}}</text>
+        </view>
+        <text class="stats-metric-card__note">{{item.note}}</text>
+      </view>
+    </view>
+
+    <view class="stats-mini-grid">
+      <view class="soft-card stats-mini-card">
+        <text class="stats-mini-card__title">情绪波动</text>
+        <text class="stats-mini-card__desc">较上周更平稳</text>
+        <view class="stats-wave"></view>
+      </view>
+      <view class="soft-card stats-mini-card">
+        <text class="stats-mini-card__title">成长关键词</text>
+        <text class="stats-mini-card__desc">本阶段特征</text>
+        <text class="stats-keyword">渐入佳境</text>
+      </view>
+    </view>
+
+    <view class="stats-quote">
+      <text>{{trendHintText}}</text>
+    </view>
+
+    <view class="stats-links">
+      <view bindtap="onOpenCalendar">日历</view>
+      <view bindtap="onOpenDiary">日记</view>
+      <view bindtap="onOpenBadges">徽章</view>
+      <view bindtap="onToggleRealityBlur">{{isRealityBlurred ? '面对现实' : '模糊现实'}}</view>
+    </view>
+  </view>
+</view>

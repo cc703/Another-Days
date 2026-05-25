@@ -1,0 +1,28 @@
+<view class="mascot mascot--{{size}} mascot--{{mood}} {{paper ? 'has-paper' : ''}}">
+  <view wx:if="{{paper}}" class="mascot__paper">
+    <view class="mascot__paper-tape mascot__paper-tape--left"></view>
+    <view class="mascot__paper-tape mascot__paper-tape--right"></view>
+  </view>
+
+  <view class="mascot__shadow"></view>
+
+  <view class="mascot__body">
+    <view class="mascot__hood"></view>
+    <view class="mascot__head"></view>
+    <view class="mascot__arm mascot__arm--left"></view>
+    <view class="mascot__arm mascot__arm--right"></view>
+    <view class="mascot__leg mascot__leg--left"></view>
+    <view class="mascot__leg mascot__leg--right"></view>
+    <view class="mascot__eye mascot__eye--left">
+      <view class="mascot__pupil"></view>
+    </view>
+    <view class="mascot__eye mascot__eye--right">
+      <view class="mascot__pupil"></view>
+    </view>
+    <view class="mascot__mouth"></view>
+    <view class="mascot__spark mascot__spark--a"></view>
+    <view class="mascot__spark mascot__spark--b"></view>
+  </view>
+
+  <view wx:if="{{tag}}" class="mascot__tag">{{tag}}</view>
+</view>

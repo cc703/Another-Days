@@ -1,0 +1,269 @@
+.home-page {
+  overflow: hidden;
+}
+
+.home-greeting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24rpx;
+  margin-bottom: 26rpx;
+  padding-right: 170rpx;
+}
+
+.home-sprout {
+  flex-shrink: 0;
+  width: 84rpx;
+  height: 84rpx;
+  border-radius: 50%;
+  border: 2rpx solid #ebe6dd;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 22rpx rgba(74, 74, 74, 0.06);
+}
+
+.home-status {
+  margin-bottom: 22rpx;
+}
+
+.home-status__row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18rpx;
+  margin-top: 18rpx;
+}
+
+.home-status__item {
+  min-height: 112rpx;
+  border: 2rpx solid transparent;
+  border-radius: 24rpx;
+  background: #f7f5f0;
+  color: #8c8c8c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  font-size: 22rpx;
+}
+
+.home-status__item.is-active {
+  border-color: #82a888;
+  background: #eef5ef;
+  color: #4a4a4a;
+}
+
+.home-status__custom,
+.home-task__entry {
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+  margin-top: 20rpx;
+}
+
+.home-status__input,
+.home-task__input {
+  flex: 1;
+  min-width: 0;
+  height: 68rpx;
+  padding: 0 22rpx;
+  border-radius: 18rpx;
+  background: #f7f5f0;
+  color: #4a4a4a;
+  font-size: 24rpx;
+  box-sizing: border-box;
+}
+
+.home-status__save,
+.home-task__add {
+  min-width: 112rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  margin: 0;
+  padding: 0 18rpx;
+  border-radius: 18rpx;
+  background: #82a888;
+  color: #ffffff;
+  font-size: 23rpx;
+}
+
+.home-status__rain {
+  width: 44rpx;
+  height: 34rpx;
+  border-radius: 50% 50% 46% 46%;
+  background: #b8b8b8;
+  position: relative;
+}
+
+.home-status__rain::after {
+  content: "";
+  position: absolute;
+  left: 12rpx;
+  top: 42rpx;
+  width: 20rpx;
+  height: 5rpx;
+  border-radius: 999rpx;
+  background: #b8b8b8;
+}
+
+.home-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20rpx;
+  margin-bottom: 22rpx;
+}
+
+.home-action {
+  position: relative;
+  min-height: 152rpx;
+  border-radius: 32rpx;
+  padding: 30rpx 28rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.home-action:active {
+  transform: scale(0.98);
+}
+
+.home-action--focus {
+  background: #82a888;
+  color: #ffffff;
+  box-shadow: 0 14rpx 28rpx rgba(130, 168, 136, 0.24);
+}
+
+.home-action--hole {
+  background: #ebe5d9;
+  color: #4a4a4a;
+}
+
+.home-action__title,
+.home-action__desc {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.home-action__title {
+  font-size: 34rpx;
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+.home-action__desc {
+  margin-top: 8rpx;
+  color: inherit;
+  opacity: 0.68;
+  font-size: 22rpx;
+}
+
+.home-growth {
+  margin-bottom: 22rpx;
+}
+
+.home-growth__streak {
+  color: #8c8c8c;
+  font-size: 22rpx;
+}
+
+.home-growth__streak text {
+  color: #82a888;
+  font-size: 30rpx;
+  font-weight: 900;
+}
+
+.home-growth__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.home-growth__cell {
+  min-width: 0;
+  text-align: center;
+  border-right: 2rpx solid #ebe6dd;
+}
+
+.home-growth__cell:last-child {
+  border-right: 0;
+}
+
+.home-growth__value,
+.home-growth__label {
+  display: block;
+}
+
+.home-growth__value {
+  font-size: 46rpx;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.home-growth__label {
+  margin-top: 8rpx;
+  color: #8c8c8c;
+  font-size: 20rpx;
+}
+
+.home-task__item {
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+  padding: 18rpx 0;
+  border-top: 2rpx solid #f7f5f0;
+  color: #4a4a4a;
+  font-size: 25rpx;
+}
+
+.home-task__item:active {
+  opacity: 0.72;
+}
+
+.home-task__check {
+  width: 30rpx;
+  height: 30rpx;
+  border: 3rpx solid #82a888;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.home-task__check.is-done {
+  background: #82a888;
+}
+
+.home-task__body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+
+.home-task__title {
+  color: #4a4a4a;
+  font-size: 25rpx;
+}
+
+.home-task__title.is-done {
+  color: #8c8c8c;
+  text-decoration: line-through;
+}
+
+.home-task__meta {
+  color: #82a888;
+  font-size: 20rpx;
+}
+
+.home-ink {
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.home-ink__word {
+  display: block;
+  font-weight: 900;
+  color: #82a888;
+  white-space: nowrap;
+}

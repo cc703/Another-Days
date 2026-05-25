@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "精神病历本",
+  "usingComponents": {
+    "neo-card": "/components/neo-card/index",
+    "chaos-toast": "/components/chaos-toast/index",
+    "scrap-background": "/components/scrap-background/index"
+  }
+}

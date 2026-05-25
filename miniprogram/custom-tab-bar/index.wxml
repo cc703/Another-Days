@@ -1,0 +1,21 @@
+<view class="dock-shell dock-shell--tabbar">
+  <view class="dock-shell__panel">
+    <view class="dock-shell__row">
+      <view
+        wx:for="{{list}}"
+        wx:key="key"
+        class="dock-item {{selected === item.key ? 'is-active' : ''}}"
+        bindtap="onSwitch"
+        data-key="{{item.key}}"
+        data-path="{{item.path}}"
+      >
+        <view wx:if="{{item.action}}" class="dock-item__action-plus"></view>
+        <block wx:else>
+          <view class="dock-item__paper"></view>
+          <v2-icon name="{{item.icon || item.key}}" size="{{20}}"></v2-icon>
+          <text class="dock-item__label">{{item.text}}</text>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

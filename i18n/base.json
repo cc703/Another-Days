@@ -1,0 +1,11 @@
+{
+	"ios": {
+		"name": "loadingfor"
+	},
+	"android": {
+		"name": "loadingfor"
+	},
+	"common": {
+		"name": "loadingfor"
+	}
+}

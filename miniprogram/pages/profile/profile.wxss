@@ -1,0 +1,359 @@
+.profile-hero {
+  display: flex;
+  align-items: center;
+  gap: 28rpx;
+  margin: 0 0 32rpx;
+  padding-right: 170rpx;
+}
+
+.profile-avatar {
+  flex-shrink: 0;
+  width: 116rpx;
+  height: 116rpx;
+  min-width: 116rpx;
+  max-width: 116rpx;
+  min-height: 116rpx;
+  max-height: 116rpx;
+  border-radius: 50%;
+  padding: 4rpx;
+  border: 2rpx solid #ebe6dd;
+  background: #ffffff;
+  box-shadow: 0 8rpx 24rpx rgba(74, 74, 74, 0.06);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  line-height: 1;
+  overflow: hidden;
+}
+
+.profile-avatar::after {
+  border: 0;
+}
+
+.profile-avatar__image,
+.profile-avatar__fallback {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.profile-avatar__fallback {
+  background: #f7f5f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-identity {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-identity__name {
+  width: 100%;
+  color: #4a4a4a;
+  font-size: 36rpx;
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+.profile-identity__row {
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+  margin-top: 12rpx;
+}
+
+.profile-identity__row text:first-child {
+  min-height: 34rpx;
+  padding: 0 14rpx;
+  border-radius: 6rpx;
+  background: #82a888;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  font-size: 18rpx;
+  font-weight: 800;
+}
+
+.profile-identity__row text:last-child {
+  color: #8c8c8c;
+  font-size: 21rpx;
+}
+
+.profile-level {
+  margin-bottom: 22rpx;
+}
+
+.profile-level__label,
+.profile-level__title {
+  display: block;
+}
+
+.profile-level__label {
+  color: #8c8c8c;
+  font-size: 21rpx;
+  margin-bottom: 8rpx;
+}
+
+.profile-level__title {
+  color: #4a4a4a;
+  font-size: 30rpx;
+  font-weight: 900;
+}
+
+.profile-level__remain {
+  color: #82a888;
+  font-size: 21rpx;
+  font-weight: 800;
+}
+
+.profile-level__bar {
+  height: 16rpx;
+  border-radius: 999rpx;
+  background: #f7f5f0;
+  overflow: hidden;
+}
+
+.profile-level__bar view {
+  height: 100%;
+  border-radius: 999rpx;
+  background: #82a888;
+}
+
+.profile-level__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 18rpx;
+  margin-top: 14rpx;
+}
+
+.profile-level__meta text {
+  color: #8c8c8c;
+  font-size: 20rpx;
+  line-height: 1.45;
+}
+
+.profile-level__meta text:first-child {
+  flex-shrink: 0;
+  color: #4a4a4a;
+  font-weight: 900;
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22rpx;
+  margin-bottom: 24rpx;
+}
+
+.profile-stat {
+  min-height: 108rpx;
+  border-radius: 28rpx;
+  background: #f7f5f0;
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+.profile-stat__value,
+.profile-stat__label {
+  display: block;
+}
+
+.profile-stat__value {
+  color: #4a4a4a;
+  font-size: 34rpx;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.profile-stat__value text {
+  font-size: 18rpx;
+  font-weight: 500;
+}
+
+.profile-stat__label {
+  margin-top: 8rpx;
+  color: #8c8c8c;
+  font-size: 18rpx;
+}
+
+.profile-menu {
+  padding: 0;
+  overflow: hidden;
+}
+
+.profile-menu__item {
+  min-height: 112rpx;
+  padding: 0 32rpx;
+  border-bottom: 2rpx solid #f7f5f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22rpx;
+}
+
+.profile-menu__item:last-child {
+  border-bottom: 0;
+}
+
+.profile-menu__left,
+.profile-menu__right {
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+}
+
+.profile-menu__left text {
+  color: #4a4a4a;
+  font-size: 27rpx;
+  font-weight: 800;
+}
+
+.profile-menu__arrow {
+  color: #c8c8c8;
+  font-size: 44rpx;
+  line-height: 1;
+}
+
+.profile-menu__new {
+  min-height: 34rpx;
+  padding: 0 14rpx;
+  border-radius: 999rpx;
+  background: #e95d5d;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  font-size: 18rpx;
+}
+
+.profile-feedback {
+  width: 100%;
+  min-height: 118rpx;
+  margin-top: 24rpx;
+  border-radius: 28rpx;
+  background: #ffffff;
+  border: 2rpx solid #ebe6dd;
+  color: #4a4a4a;
+  padding: 24rpx;
+  box-sizing: border-box;
+  font-size: 25rpx;
+  line-height: 1.5;
+}
+
+.profile-feedback-submit {
+  margin-top: 18rpx;
+}
+
+.profile-logout {
+  margin: 28rpx auto 0;
+  color: #b45f5f;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.profile-settings-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(74, 74, 74, 0.28);
+  display: flex;
+  align-items: flex-end;
+}
+
+.profile-settings-modal__card {
+  width: 100%;
+  border-radius: 36rpx 36rpx 0 0;
+  background: #ffffff;
+  padding: 34rpx 30rpx calc(38rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+
+.profile-settings-modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.profile-settings-modal__title {
+  color: #4a4a4a;
+  font-size: 30rpx;
+  font-weight: 900;
+}
+
+.profile-settings-modal__close {
+  color: #8c8c8c;
+  font-size: 46rpx;
+}
+
+.profile-setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24rpx;
+  min-height: 112rpx;
+  border-top: 2rpx solid #f7f5f0;
+}
+
+.profile-setting-row__copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-setting-row__copy text {
+  display: block;
+}
+
+.profile-setting-row__copy text:first-child {
+  color: #4a4a4a;
+  font-size: 24rpx;
+  font-weight: 800;
+}
+
+.profile-setting-row__copy text:last-child {
+  margin-top: 8rpx;
+  color: #8c8c8c;
+  font-size: 20rpx;
+  line-height: 1.45;
+}
+
+.profile-setting-row__arrow {
+  color: #c8c8c8;
+  font-size: 44rpx;
+  line-height: 1;
+}
+
+.profile-setting-status {
+  margin-top: 18rpx;
+  padding: 20rpx 22rpx;
+  border-radius: 22rpx;
+  background: #f7f5f0;
+}
+
+.profile-setting-status--active {
+  background: #eef5ef;
+}
+
+.profile-setting-status__title,
+.profile-setting-status__detail {
+  display: block;
+}
+
+.profile-setting-status__title {
+  color: #4a4a4a;
+  font-size: 22rpx;
+  font-weight: 800;
+}
+
+.profile-setting-status__detail {
+  margin-top: 8rpx;
+  color: #8c8c8c;
+  font-size: 20rpx;
+  line-height: 1.45;
+}

@@ -1,0 +1,9 @@
+<view class="neo-card neo-card--{{tone}} {{padded ? 'neo-card--padded' : ''}} {{dotted ? 'neo-card--dotted' : ''}} custom-class">
+  <view class="neo-card__grain"></view>
+  <view class="neo-card__tape neo-card__tape--left"></view>
+  <view class="neo-card__tape neo-card__tape--right"></view>
+  <view class="neo-card__pin"></view>
+  <view class="neo-card__inner">
+    <slot />
+  </view>
+</view>

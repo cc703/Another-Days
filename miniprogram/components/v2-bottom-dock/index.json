@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "v2-icon": "/components/v2-icon/index"
+  }
+}

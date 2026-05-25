@@ -1,0 +1,242 @@
+.stats-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 34rpx;
+  color: #4a4a4a;
+  font-size: 29rpx;
+  font-weight: 800;
+}
+
+.stats-nav__ghost {
+  width: 64rpx;
+}
+
+.stats-segment {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6rpx;
+  padding: 6rpx;
+  margin-bottom: 30rpx;
+  border-radius: 999rpx;
+  border: 2rpx solid #ebe6dd;
+  background: #ffffff;
+}
+
+.stats-segment view {
+  min-height: 56rpx;
+  border-radius: 999rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8c8c8c;
+  font-size: 24rpx;
+  font-weight: 800;
+}
+
+.stats-segment view:active {
+  opacity: 0.76;
+}
+
+.stats-segment .is-active {
+  background: #82a888;
+  color: #ffffff;
+}
+
+.stats-chart-card__total {
+  display: block;
+  margin-top: 8rpx;
+  color: #8c8c8c;
+  font-size: 22rpx;
+}
+
+.stats-bars {
+  height: 300rpx;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18rpx;
+  padding-top: 30rpx;
+  border-bottom: 2rpx dashed #ebe6dd;
+}
+
+.stats-empty {
+  min-height: 200rpx;
+  color: #8c8c8c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 24rpx;
+  line-height: 1.6;
+}
+
+.stats-bars__item {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14rpx;
+}
+
+.stats-bars__bar {
+  width: 100%;
+  max-width: 44rpx;
+  min-height: 14rpx;
+  border-radius: 8rpx 8rpx 0 0;
+  background: #82a888;
+  opacity: 0.82;
+}
+
+.stats-bars__item text {
+  color: #8c8c8c;
+  font-size: 18rpx;
+}
+
+.stats-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18rpx;
+  margin-top: 22rpx;
+}
+
+.stats-metric-card {
+  min-height: 178rpx;
+  padding: 24rpx;
+}
+
+.stats-metric-card__title,
+.stats-metric-card__note {
+  display: block;
+}
+
+.stats-metric-card__title {
+  color: #4a4a4a;
+  font-size: 22rpx;
+  font-weight: 900;
+}
+
+.stats-metric-card__value {
+  display: flex;
+  align-items: baseline;
+  gap: 8rpx;
+  margin-top: 18rpx;
+}
+
+.stats-metric-card__value text:first-child {
+  color: #4a4a4a;
+  font-size: 40rpx;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.stats-metric-card__value text:last-child {
+  color: #8c8c8c;
+  font-size: 18rpx;
+  font-weight: 800;
+}
+
+.stats-metric-card__note {
+  margin-top: 12rpx;
+  color: #8c8c8c;
+  font-size: 19rpx;
+  line-height: 1.45;
+}
+
+.stats-metric-card--yellow {
+  background: #fff8df;
+}
+
+.stats-metric-card--green {
+  background: #edf7ef;
+}
+
+.stats-metric-card--blue {
+  background: #edf4fb;
+}
+
+.stats-metric-card--ink {
+  background: #f1f0ed;
+}
+
+.stats-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22rpx;
+  margin-top: 26rpx;
+}
+
+.stats-mini-card {
+  min-height: 190rpx;
+}
+
+.stats-mini-card__title,
+.stats-mini-card__desc,
+.stats-keyword {
+  display: block;
+}
+
+.stats-mini-card__title {
+  color: #4a4a4a;
+  font-size: 25rpx;
+  font-weight: 900;
+}
+
+.stats-mini-card__desc {
+  margin-top: 8rpx;
+  color: #8c8c8c;
+  font-size: 20rpx;
+}
+
+.stats-wave {
+  height: 70rpx;
+  margin-top: 24rpx;
+  border-radius: 50%;
+  border-top: 7rpx solid #f2d785;
+  transform: skewX(-20deg);
+}
+
+.stats-keyword {
+  margin-top: 30rpx;
+  color: #82a888;
+  font-size: 29rpx;
+  font-weight: 900;
+}
+
+.stats-quote {
+  margin-top: 26rpx;
+  border-radius: 30rpx;
+  background: #ebe5d9;
+  padding: 34rpx;
+  text-align: center;
+}
+
+.stats-quote text {
+  color: #4a4a4a;
+  font-size: 25rpx;
+  line-height: 1.6;
+  font-weight: 800;
+}
+
+.stats-links {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12rpx;
+  margin-top: 24rpx;
+}
+
+.stats-links view {
+  min-height: 62rpx;
+  border-radius: 999rpx;
+  background: #ffffff;
+  border: 2rpx solid #ebe6dd;
+  color: #82a888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21rpx;
+  font-weight: 800;
+}

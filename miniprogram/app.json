@@ -1,0 +1,57 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/focus/focus",
+    "pages/hole/hole",
+    "pages/stats/stats",
+    "pages/profile/profile",
+    "pages/badges/badges",
+    "pages/calendar/calendar",
+    "pages/diary/diary"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundColor": "#ece6db",
+    "backgroundTextStyle": "dark"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "custom": true,
+    "color": "#615446",
+    "selectedColor": "#111111",
+    "backgroundColor": "#fff9ef",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/focus/focus",
+        "text": "专注"
+      },
+      {
+        "pagePath": "pages/diary/diary",
+        "text": "记录"
+      },
+      {
+        "pagePath": "pages/calendar/calendar",
+        "text": "日历"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {
+    "neo-card": "/components/neo-card/index",
+    "chaos-toast": "/components/chaos-toast/index",
+    "scrap-background": "/components/scrap-background/index",
+    "v2-mascot": "/components/v2-mascot/index",
+    "v2-bottom-dock": "/components/v2-bottom-dock/index",
+    "v2-icon": "/components/v2-icon/index"
+  }
+}

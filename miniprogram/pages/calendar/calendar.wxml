@@ -1,0 +1,132 @@
+<chaos-toast show="{{toastVisible}}" message="{{toastMessage}}"></chaos-toast>
+
+<view class="calendar-page soft-page">
+  <view class="soft-container">
+    <view class="soft-header calendar-header">
+      <view>
+        <text class="soft-title">{{monthLabel}}</text>
+        <text class="soft-subtitle">每一天都在留下印记</text>
+      </view>
+      <view class="calendar-today" bindtap="onSelectToday">回到今天</view>
+    </view>
+
+    <view class="soft-card calendar-panel">
+      <view class="calendar-panel__nav">
+        <view bindtap="onPrevMonth">‹</view>
+        <text>{{monthLabel}}</text>
+        <view bindtap="onNextMonth">›</view>
+      </view>
+      <view class="calendar-week">
+        <text wx:for="{{weekLabels}}" wx:key="*this">{{item}}</text>
+      </view>
+      <view class="calendar-grid">
+        <block wx:for="{{calendarCells}}" wx:key="key">
+          <view wx:if="{{item.empty}}" class="calendar-cell calendar-cell--empty"></view>
+          <view
+            wx:else
+            class="calendar-cell {{item.checked ? 'is-checked' : ''}} {{item.selected ? 'is-selected' : ''}} {{item.today ? 'is-today' : ''}} {{item.future ? 'is-future' : ''}}"
+            bindtap="onSelectDay"
+            data-date="{{item.date}}"
+          >
+            <text>{{item.label}}</text>
+            <view wx:if="{{item.checked}}" class="calendar-cell__dot"></view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <view class="calendar-legend">
+      <view><text class="calendar-legend__dot"></text> 有记录</view>
+      <view><text class="calendar-legend__today">今</text> 今天</view>
+    </view>
+
+    <view class="soft-card calendar-action">
+      <view class="soft-card__topline">
+        <view>
+          <text class="soft-card__title">{{selectedTitle}}</text>
+          <text class="soft-card__desc">{{selectedDesc}}</text>
+        </view>
+        <text class="soft-pill">{{selectedStatus}}</text>
+      </view>
+      <view wx:if="{{selectedCanCheckIn}}" class="soft-primary-button" bindtap="onCheckIn">
+        {{submitting ? '正在盖章...' : selectedActionLabel}}
+      </view>
+      <view wx:else class="calendar-action__pill">{{selectedActionLabel}}</view>
+    </view>
+
+    <view class="soft-card calendar-detail">
+      <view class="soft-card__topline">
+        <text class="soft-card__title">当日回看</text>
+        <text class="soft-pill">{{selectedLoading ? '同步中' : completedTaskCountText}}</text>
+      </view>
+
+      <view class="calendar-detail__stats">
+        <view>
+          <text>{{focusMinutes}}</text>
+          <text>专注分钟</text>
+        </view>
+        <view>
+          <text>{{focusSessions}}</text>
+          <text>专注次数</text>
+        </view>
+        <view>
+          <text>{{diaryRecords.length}}</text>
+          <text>日记</text>
+        </view>
+      </view>
+
+      <view wx:if="{{focusNote}}" class="calendar-detail__note">{{focusNote}}</view>
+
+      <view class="calendar-section">
+        <text class="calendar-section__title">完成内容</text>
+        <view wx:if="{{completedTasks.length}}">
+          <view wx:for="{{completedTasks}}" wx:key="key" class="calendar-task">
+            <text>{{item.title}}</text>
+            <text wx:if="{{item.focusMinutes}}">{{item.focusMinutes}}min</text>
+          </view>
+        </view>
+        <view wx:else class="calendar-empty">这一天还没有完成任务记录。</view>
+      </view>
+
+      <view class="calendar-section">
+        <text class="calendar-section__title">日记记录</text>
+        <view wx:if="{{diaryRecords.length}}">
+          <view
+            wx:for="{{diaryRecords}}"
+            wx:key="key"
+            class="calendar-diary"
+            bindtap="onOpenDiaryRecord"
+            data-key="{{item.key}}"
+          >
+            <view class="calendar-diary__meta">
+              <text>{{item.time}}</text>
+              <text wx:if="{{item.mood}}">{{item.mood}}</text>
+            </view>
+            <text class="calendar-diary__content">{{item.content}}</text>
+            <view wx:if="{{item.tags.length}}" class="calendar-diary__tags">
+              <text wx:for="{{item.tags}}" wx:key="*this">#{{item}}</text>
+            </view>
+          </view>
+        </view>
+        <view wx:else class="calendar-empty">这一天没有日记记录。</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{diaryModalVisible}}" class="calendar-diary-modal" bindtap="onCloseDiaryRecord">
+  <view class="calendar-diary-modal__panel" catchtap="noop">
+    <view class="calendar-diary-modal__header">
+      <text>{{selectedDate}} {{selectedDiary.time}}</text>
+      <view bindtap="onCloseDiaryRecord">×</view>
+    </view>
+    <text wx:if="{{selectedDiary.mood}}" class="calendar-diary-modal__mood">{{selectedDiary.mood}}</text>
+    <text class="calendar-diary-modal__content">{{selectedDiary.content}}</text>
+    <view wx:if="{{selectedDiary.tags.length}}" class="calendar-diary__tags">
+      <text wx:for="{{selectedDiary.tags}}" wx:key="*this">#{{item}}</text>
+    </view>
+    <view wx:if="{{selectedDiary.images.length}}" class="calendar-diary-modal__images">
+      <image wx:for="{{selectedDiary.images}}" wx:key="key" src="{{item.url}}" mode="aspectFill"></image>
+    </view>
+  </view>
+</view>

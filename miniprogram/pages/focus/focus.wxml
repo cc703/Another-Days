@@ -1,0 +1,93 @@
+<chaos-toast show="{{toastVisible}}" message="{{toastMessage}}"></chaos-toast>
+
+<view class="focus-page soft-page">
+  <view class="soft-container focus-page__container">
+    <view class="focus-task-pill">
+      <v2-icon name="focus" size="{{20}}"></v2-icon>
+      <text>{{taskDisplayName}}</text>
+    </view>
+
+    <view class="focus-mode">
+      <view
+        class="focus-mode__item {{timerMode === 'countdown' ? 'is-active' : ''}}"
+        bindtap="onTimerModeSelect"
+        data-mode="countdown"
+      >倒计时</view>
+      <view
+        class="focus-mode__item {{timerMode === 'countup' ? 'is-active' : ''}}"
+        bindtap="onTimerModeSelect"
+        data-mode="countup"
+      >正计时</view>
+    </view>
+
+    <view class="focus-ring-card">
+      <view class="focus-ring">
+        <view class="focus-ring__progress" style="{{ringStyle}}"></view>
+        <view class="focus-ring__mask"></view>
+        <view class="focus-ring__center">
+          <text class="focus-ring__time">{{displayTime}}</text>
+          <text class="focus-ring__target">{{targetLabel}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="focus-form {{isActive ? 'is-disabled' : ''}}">
+      <input
+        class="focus-form__input"
+        placeholder="输入这轮专注任务"
+        value="{{taskName}}"
+        bindinput="onTaskInput"
+        disabled="{{isActive}}"
+        confirm-type="done"
+      />
+      <view wx:if="{{showCustomDurationInput}}" class="focus-form__duration">
+        <input
+          class="focus-form__duration-input"
+          type="number"
+          placeholder="自定义分钟"
+          value="{{customDuration}}"
+          bindinput="onCustomDurationInput"
+          disabled="{{isActive}}"
+          confirm-type="done"
+          bindconfirm="onCustomDurationConfirm"
+        />
+        <button class="focus-form__button" size="mini" bindtap="onCustomDurationConfirm">设定</button>
+      </view>
+    </view>
+
+    <view class="focus-controls">
+      <view wx:if="{{showResetControl}}" class="focus-control focus-control--small" bindtap="onResetTimer">
+        <view class="focus-control__stop"></view>
+      </view>
+      <view class="focus-control focus-control--main" bindtap="onToggleTimer">
+        <view wx:if="{{isActive}}" class="focus-control__pause"></view>
+        <view wx:else class="focus-control__play"></view>
+      </view>
+    </view>
+
+    <view class="focus-presets">
+      <view
+        wx:for="{{durationOptions}}"
+        wx:key="value"
+        class="focus-presets__item {{selectedDuration === item.value ? 'is-active' : ''}}"
+        bindtap="onDurationPick"
+        data-duration="{{item.value}}"
+      >
+        <text class="focus-presets__value">{{item.value > 0 ? item.value + 'min' : item.label}}</text>
+        <text class="focus-presets__label">{{item.label}}</text>
+      </view>
+    </view>
+
+    <view wx:if="{{showBottomMeta}}" class="soft-card focus-meta-card">
+      <text class="focus-meta-card__status">{{stateLabel}}</text>
+      <text class="soft-card__desc">{{stateCopy}}</text>
+      <view class="focus-meta-card__row">
+        <text>今日 {{loading ? '同步中' : todayFocusLabel}}</text>
+        <text>轮次 {{loading ? '--' : todaySessionsLabel}}</text>
+        <text>{{taskFooterLabel}}</text>
+      </view>
+    </view>
+
+    <text class="focus-quote">不要急，所有的积累都在暗处拔节。</text>
+  </view>
+</view>

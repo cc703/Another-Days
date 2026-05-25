@@ -1,0 +1,33 @@
+<chaos-toast show="{{toastVisible}}" message="{{toastMessage}}"></chaos-toast>
+
+<view class="badges-page soft-page">
+  <view class="soft-container soft-container--secondary">
+    <view class="badges-nav">
+      <view class="soft-back" bindtap="onBack">‹</view>
+      <text>废柴勋章墙</text>
+      <view class="badges-nav__ghost"></view>
+    </view>
+
+    <view class="badges-summary">
+      <text class="badges-summary__count">{{heroTitle}}</text>
+      <text class="badges-summary__copy">每一枚勋章，都是你认真生活的证明</text>
+    </view>
+
+    <view class="badges-grid">
+      <view wx:for="{{earnedBadges}}" wx:key="key" class="badge-card">
+        <view class="badge-card__icon"><v2-icon name="badge"></v2-icon></view>
+        <text class="badge-card__name">{{item.title}}</text>
+        <text class="badge-card__desc">{{item.desc}}</text>
+      </view>
+      <view wx:for="{{lockedBadges}}" wx:key="key" class="badge-card is-locked">
+        <view class="badge-card__icon"><v2-icon name="badge"></v2-icon></view>
+        <text class="badge-card__name">{{item.title}}</text>
+        <text class="badge-card__desc">{{item.progressText}}</text>
+      </view>
+    </view>
+
+    <view wx:if="{{!earnedBadges.length && !lockedBadges.length}}" class="soft-card badges-empty">
+      勋章墙同步中，先去完成一次专注或打卡。
+    </view>
+  </view>
+</view>

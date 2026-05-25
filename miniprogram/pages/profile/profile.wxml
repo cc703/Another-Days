@@ -1,0 +1,154 @@
+<chaos-toast show="{{toastVisible}}" message="{{toastMessage}}"></chaos-toast>
+
+<view class="profile-page soft-page">
+  <view class="soft-container">
+    <view class="profile-hero">
+      <button
+        class="profile-avatar"
+        open-type="chooseAvatar"
+        bindchooseavatar="onChooseAvatar"
+        binderror="onAvatarError"
+        disabled="{{profileLoading || profileSyncing}}"
+      >
+        <image wx:if="{{avatarPreviewUrl}}" class="profile-avatar__image" src="{{avatarPreviewUrl}}" mode="aspectFill" binderror="onAvatarImageError"></image>
+        <view wx:else class="profile-avatar__fallback">
+          <v2-icon name="leaf"></v2-icon>
+        </view>
+      </button>
+      <view class="profile-identity">
+        <input
+          class="profile-identity__name"
+          type="nickname"
+          placeholder="星光赶路人"
+          value="{{profileSummary.hasNickNameAuth ? userInfo.nickName : profileSummary.nickName}}"
+          bindchange="onNicknameChange"
+          bindblur="onNicknameBlur"
+          focus="{{nicknameFocus}}"
+          disabled="{{profileLoading || profileSyncing}}"
+        />
+        <view class="profile-identity__row">
+          <text>考研党</text>
+          <text>档案编号: #9527</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="soft-card profile-level">
+      <view class="soft-card__topline">
+        <view>
+          <text class="profile-level__label">当前阶段</text>
+          <text class="profile-level__title">Lv.{{statsSnapshot.level}} 茁壮小树</text>
+        </view>
+        <text class="profile-level__remain">还差 {{statsSnapshot.experienceToNext}} XP 升级</text>
+      </view>
+      <view class="profile-level__bar"><view style="width: {{statsSnapshot.xpProgressWidth}};"></view></view>
+      <view class="profile-level__meta">
+        <text>{{statsSnapshot.xpText}}</text>
+        <text>{{statsSnapshot.xpRuleText}}</text>
+      </view>
+    </view>
+
+    <view class="profile-stats">
+      <view class="profile-stat">
+        <v2-icon name="sun"></v2-icon>
+        <view>
+          <text class="profile-stat__value">{{statsSnapshot.currentStreak}}<text>天</text></text>
+          <text class="profile-stat__label">连续坚持</text>
+        </view>
+      </view>
+      <view class="profile-stat">
+        <v2-icon name="focus"></v2-icon>
+        <view>
+          <text class="profile-stat__value">{{statsSnapshot.totalFocusMinutes}}<text>m</text></text>
+          <text class="profile-stat__label">累计专注</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="profile-menu soft-card">
+      <view class="profile-menu__item" bindtap="onOpenAbstractCard" data-route="/pages/stats/stats" data-title="存活证据报告">
+        <view class="profile-menu__left">
+          <v2-icon name="chart"></v2-icon>
+          <text>存活证据报告</text>
+        </view>
+        <text class="profile-menu__arrow">›</text>
+      </view>
+      <view class="profile-menu__item" bindtap="onOpenAbstractCard" data-route="/pages/badges/badges" data-title="废柴勋章墙">
+        <view class="profile-menu__left">
+          <v2-icon name="badge"></v2-icon>
+          <text>废柴勋章墙</text>
+        </view>
+        <view class="profile-menu__right">
+          <text class="profile-menu__new">新解锁</text>
+          <text class="profile-menu__arrow">›</text>
+        </view>
+      </view>
+      <view class="profile-menu__item" bindtap="onOpenSettings">
+        <view class="profile-menu__left">
+          <v2-icon name="settings"></v2-icon>
+          <text>设置与提醒</text>
+        </view>
+        <text class="profile-menu__arrow">›</text>
+      </view>
+    </view>
+
+    <textarea
+      class="profile-feedback"
+      placeholder="如果你有什么想要增加的可以在此输入，作者马上回复你"
+      maxlength="180"
+      value="{{feedbackText}}"
+      bindinput="onFeedbackInput"
+    ></textarea>
+
+    <view class="soft-primary-button profile-feedback-submit" bindtap="onSendFeedback">投递反馈</view>
+    <view wx:if="{{isLoggedIn}}" class="profile-logout" bindtap="onLogout">退出登录</view>
+  </view>
+
+  <view wx:if="{{settingsModalVisible}}" class="profile-settings-modal" bindtap="onCloseSettingsModal">
+    <view class="profile-settings-modal__card" catchtap="noop">
+      <view class="profile-settings-modal__header">
+        <text class="profile-settings-modal__title">设置与提醒</text>
+        <view class="profile-settings-modal__close" catchtap="onCloseSettingsModal">×</view>
+      </view>
+
+      <view class="profile-setting-row" bindtap="onReminderSwitchChange">
+        <view class="profile-setting-row__copy">
+          <text>每日学习提醒</text>
+          <text>作者正在加急开发中</text>
+        </view>
+        <switch
+          checked="{{false}}"
+          disabled="{{true}}"
+          bindchange="onReminderSwitchChange"
+          color="#82a888"
+        />
+      </view>
+
+      <view class="profile-setting-status profile-setting-status--{{reminderStatus.tone}}">
+        <text class="profile-setting-status__title">{{reminderStatus.title}}</text>
+        <text class="profile-setting-status__detail">{{reminderStatus.detail}}</text>
+      </view>
+
+      <view class="profile-setting-row" bindtap="onReminderTimeChange">
+        <view class="profile-setting-row__copy">
+          <text>提醒时间</text>
+          <text>作者正在加急开发中</text>
+        </view>
+        <text class="profile-setting-row__arrow">›</text>
+      </view>
+
+      <view class="profile-setting-row">
+        <view class="profile-setting-row__copy">
+          <text>反馈回复通知</text>
+          <text>当前仅保存通知偏好，后续接入回复消息时按此提醒</text>
+        </view>
+        <switch
+          checked="{{settings.feedbackReplyNotice}}"
+          disabled="{{settingsSaving}}"
+          bindchange="onFeedbackNoticeSwitchChange"
+          color="#82a888"
+        />
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,111 @@
+<chaos-toast show="{{toastVisible}}" message="{{toastMessage}}"></chaos-toast>
+
+<view class="home-page soft-page">
+  <view class="soft-container">
+    <view class="home-greeting">
+      <view>
+        <text class="soft-title">早上好，小树苗</text>
+        <text class="soft-subtitle">今天也要慢慢来，比较快。</text>
+      </view>
+      <view class="home-sprout">
+        <v2-icon name="leaf"></v2-icon>
+      </view>
+    </view>
+
+    <view class="soft-card home-status">
+      <view class="soft-card__topline">
+        <text class="soft-card__title">今日状态</text>
+        <text class="soft-pill">{{todayMoodTitle}}</text>
+      </view>
+      <text class="soft-card__desc">{{todayMoodCopy}}</text>
+      <view class="home-status__row">
+        <view
+          wx:for="{{statusOptions}}"
+          wx:key="key"
+          class="home-status__item {{selectedStatusKey === item.key ? 'is-active' : ''}}"
+          bindtap="onStatusSelect"
+          data-key="{{item.key}}"
+        >
+          <v2-icon wx:if="{{item.key === 'charged'}}" name="sun"></v2-icon>
+          <view wx:elif="{{item.key === 'tired'}}" class="home-status__rain"></view>
+          <v2-icon wx:else name="wind"></v2-icon>
+          <text>{{item.label}}</text>
+        </view>
+      </view>
+      <view class="home-status__custom">
+        <input
+          class="home-status__input"
+          placeholder="自定义今天的状态"
+          value="{{customStatusText}}"
+          bindinput="onCustomStatusInput"
+          confirm-type="done"
+          bindconfirm="onCustomStatusConfirm"
+        />
+        <button class="home-status__save" size="mini" bindtap="onCustomStatusConfirm">保存</button>
+      </view>
+    </view>
+
+    <view class="home-actions">
+      <view class="home-action home-action--focus" bindtap="onOpenFocus">
+        <v2-icon name="focus" size="{{28}}"></v2-icon>
+        <text class="home-action__title">开始专注</text>
+        <text class="home-action__desc">进入护城河</text>
+      </view>
+      <view class="home-action home-action--hole" bindtap="onOpenHole">
+        <v2-icon name="diary" size="{{28}}"></v2-icon>
+        <text class="home-action__title">扔进树洞</text>
+        <text class="home-action__desc">清空负能量</text>
+      </view>
+    </view>
+
+    <view class="soft-card home-growth">
+      <view class="soft-card__topline">
+        <text class="soft-card__title">今日积累</text>
+        <text class="home-growth__streak">连续坚持 <text>{{streakDays}}</text> 天</text>
+      </view>
+      <view class="home-growth__grid">
+        <view class="home-growth__cell">
+          <text class="home-growth__value">{{homeFocusMinutes}}</text>
+          <text class="home-growth__label">专注分钟</text>
+        </view>
+        <view class="home-growth__cell">
+          <text class="home-growth__value">{{todayTaskCount}}</text>
+          <text class="home-growth__label">今日任务</text>
+        </view>
+        <view class="home-growth__cell" bindtap="onOpenDiary">
+          <text class="home-growth__value">{{diaryCount}}</text>
+          <text class="home-growth__label">累计日记</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="soft-card home-task">
+      <view class="soft-card__topline">
+        <text class="soft-card__title">今日任务</text>
+        <text class="soft-link" bindtap="onOpenFocus">去专注</text>
+      </view>
+      <view class="home-task__entry">
+        <input
+          class="home-task__input"
+          placeholder="添加今天要完成的任务"
+          value="{{newTaskTitle}}"
+          bindinput="onNewTaskInput"
+          confirm-type="done"
+          bindconfirm="onAddTodayTask"
+        />
+        <button class="home-task__add" size="mini" bindtap="onAddTodayTask">添加</button>
+      </view>
+      <view wx:for="{{todayTasks}}" wx:key="id" class="home-task__item" bindtap="onToggleTodayTask" data-id="{{item.id}}">
+        <view class="home-task__check {{item.done ? 'is-done' : ''}}"></view>
+        <view class="home-task__body">
+          <text class="home-task__title {{item.done ? 'is-done' : ''}}">{{item.label}}</text>
+          <text wx:if="{{item.duration}}" class="home-task__meta">专注 {{item.duration}} 分钟</text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:for="{{floatingInks}}" wx:key="id" class="home-ink" style="left: {{item.left}}px; top: {{item.top}}px;">
+      <text class="home-ink__word" style="font-size: {{item.fontSize}}px;" animation="{{item.animationData}}">{{item.text}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,3 @@
+<view class="v2-icon">
+  <icon type="{{iconType}}" size="{{size}}" color="{{iconColor}}"></icon>
+</view>

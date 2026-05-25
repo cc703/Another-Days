@@ -1,0 +1,12 @@
+<view class="scrap-bg">
+  <view class="scrap-bg__wash"></view>
+  <view class="scrap-bg__grid"></view>
+  <view
+    wx:if="{{showPieces}}"
+    wx:for="{{scraps}}"
+    wx:key="index"
+    class="scrap-bg__piece"
+    style="top: {{item.top}}; left: {{item.left}}; right: {{item.right}}; width: {{item.width}}; height: {{item.height}}; transform: rotate({{item.rotate}});"
+  ></view>
+  <view class="scrap-bg__fade"></view>
+</view>

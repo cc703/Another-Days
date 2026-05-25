@@ -1,0 +1,5 @@
+<view class="chaos-toast {{show ? 'chaos-toast--show' : ''}}">
+  <view class="chaos-toast__bubble">
+    <text>{{message}}</text>
+  </view>
+</view>

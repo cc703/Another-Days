@@ -1,0 +1,72 @@
+.dock-shell {
+  position: relative;
+  padding: 0 16rpx calc(14rpx + env(safe-area-inset-bottom));
+  background: transparent;
+}
+
+.dock-shell__panel {
+  border: 2rpx solid rgba(235, 230, 221, 0.8);
+  border-radius: 34rpx 34rpx 0 0;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 -8rpx 26rpx rgba(74, 74, 74, 0.08);
+  backdrop-filter: blur(18rpx);
+}
+
+.dock-shell__row {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 4rpx;
+  padding: 10rpx 10rpx 8rpx;
+}
+
+.dock-item {
+  position: relative;
+  min-height: 104rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+  color: #b8b8b8;
+}
+
+.dock-item.is-active {
+  color: #82a888;
+}
+
+.dock-item__paper {
+  display: none;
+}
+
+.dock-item__label {
+  font-size: 18rpx;
+  line-height: 1;
+  font-weight: 800;
+  color: currentColor;
+}
+
+.dock-item__action-plus {
+  position: relative;
+  top: -18rpx;
+  width: 92rpx;
+  height: 92rpx;
+  border-radius: 50%;
+  background: #82a888;
+  box-shadow: 0 12rpx 28rpx rgba(130, 168, 136, 0.32);
+}
+
+.dock-item__action-plus::before,
+.dock-item__action-plus::after {
+  content: "";
+  position: absolute;
+  left: 27rpx;
+  top: 43rpx;
+  width: 38rpx;
+  height: 6rpx;
+  border-radius: 999rpx;
+  background: #ffffff;
+}
+
+.dock-item__action-plus::after {
+  transform: rotate(90deg);
+}
